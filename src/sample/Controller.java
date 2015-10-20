@@ -43,7 +43,7 @@ public class Controller implements Initializable, ChangeListener {
         if(!nameField.getText().equals("") && !phoneField.getText().equals("") && !emailField.getText().equals("")){
             Contact newContact = new Contact(nameField.getText(), phoneField.getText(), emailField.getText());
             contacts.add(newContact);
-            //Reseting window value blank after entry
+            //Resetting window value blank after entry
             nameField.setText("");
             phoneField.setText("");
             emailField.setText("");
