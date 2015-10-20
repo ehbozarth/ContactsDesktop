@@ -17,7 +17,19 @@ public class Contact {
 
     @Override
     public String toString(){
-        return String.format("%s %s, %s", name,phone,email);
+        return String.format("%s | %s | %s", name,phone,email);
     }//End of toString override
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }//End of Contact Class
 

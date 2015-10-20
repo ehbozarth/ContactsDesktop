@@ -10,8 +10,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import jodd.json.JsonSerializer;
 
 
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -47,6 +50,7 @@ public class Controller implements Initializable, ChangeListener {
             nameField.setText("");
             phoneField.setText("");
             emailField.setText("");
+            saveContacts(contacts);
         }//End of if statement
         else{
             nameField.setText("");
@@ -63,7 +67,23 @@ public class Controller implements Initializable, ChangeListener {
         phoneField.setText("");
         emailField.setText("");
 
+        saveContacts(contacts);
+
     }//End of removeContact Method
+
+    static void saveContacts(ObservableList<Contact> contacts) {
+        File f = new File("Contacts.json");
+        JsonSerializer serializer = new JsonSerializer();
+        String contentToSave = serializer.serialize(contacts);
+        try {
+            FileWriter fw = new FileWriter(f);
+            fw.write(contentToSave);
+            fw.close();
+        }//End of try
+        catch (Exception e) {
+
+        }//End of catch
+    }//End of saveContacts
 
     @Override
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
